@@ -1,0 +1,241 @@
+/* Login Button (Link for inspiration in references)*/
+.login {
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 2px solid var(--red);
+    color: var(--red);
+    font-weight: 600;
+}
+
+.login::after {
+    display: none;
+}
+
+.login:hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+/* Logo*/
+.logo {
+    height: 42px;
+    transition: transform 0.25s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.menu-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: none;
+}
+
+/*Login Page*/
+.login-container {
+    min-height: 90vh;
+    min-height: 90dvh;
+    background: url(/imgs/background.jpg) no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    position: relative;
+    width: 500px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid var(--red);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px var(--black);
+    display: flex;
+    overflow: hidden;
+}
+
+.wrapper.active {
+    height: 581px
+}
+
+.wrapper .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.wrapper .form-box {
+    width: 100%;
+    padding: 40px;
+}
+
+.wrapper .form-box.login-page {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active .form-box.login-page {
+    transition: none;
+    transform: translateX(-500px);
+
+}
+
+.wrapper .form-box.register {
+    position: absolute;
+    transform: none;
+    transform: translateX(500px);
+}
+
+.wrapper.active .form-box.register {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.form-box h2 {
+    font-size: 30px;
+    color: var(--black);
+    text-align: center;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid var(--black);
+    margin: 30px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 15px;
+    color: var(--black);
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: var(--black);
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.input-box select {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: var(--black);
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+    appearance: none;
+    cursor: pointer;
+}
+
+.input-box select:focus~label,
+.input-box select:valid~label {
+    top: -5px;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+}
+
+.remember-forgot {
+    font-size: 14px;
+    color: var(--black);
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input {
+    accent-color: var(--black);
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: var(--black);
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    color: var(--dark);
+    text-decoration: underline;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 45px;
+    background: var(--black);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.submit-btn:hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+.login-register {
+    font-size: 14px;
+    color: var(--black);
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.login-register p a {
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 600px;
+}
+
+.login-register p a:hover {
+    text-decoration: underline;
+}
+
+@media (max-height: 800px) {
+
+    .login-container {
+        min-height: 650px;
+        background: url(/imgs/background.jpg) no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

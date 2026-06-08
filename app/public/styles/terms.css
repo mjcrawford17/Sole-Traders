@@ -1,0 +1,72 @@
+/*Terms*/
+
+.terms-container{
+    min-height: 95vh;
+    min-height: 95dvh;
+    background: url(/imgs/background.jpg) no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+}
+
+.terms-wrapper {
+    position: relative;
+    width: 1500px;
+    min-height: 800px;
+    background: transparent;
+    border: 2px solid var(--red);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px var(--black);
+    display: flex;
+    overflow: hidden;
+}
+
+.terms-box h2 {
+    font-size: 36px;
+    color: var(--black);
+    text-align: center;
+}
+
+.terms-box h3 {
+    font-size: 26px;
+    color: var(--black);
+
+}
+
+.terms-wrapper .terms-box {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+}
+
+.terms-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.terms-btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 14px;
+    background: var(--red);
+    color: var(--white);
+    font-weight: 600;
+    line-height: 1;
+}
+
+.terms-btn:hover {
+    background: var(--white);
+    color: var(--red);
+    border: 2px solid var(--red);
+}
+
+@media (max-width: 1195px) {
+    .terms-btn {
+        display: none;
+    }
+}

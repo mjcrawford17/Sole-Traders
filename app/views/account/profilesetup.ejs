@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sole Traders - Profile Setup</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="icon" type="image/png" href="/imgs/favicon.png" />
+</head>
+
+<body>
+  <%- include('../partials/navbar'); %>
+
+    <div class="container-fluid setup-container">
+      <div class="setup-wrapper">
+        <div class="setup-box">
+          <h2>Complete Your Profile</h2>
+
+          <form id="profileform" method="post" action="/setupprofile">
+
+            <div class="input-box">
+              <input id="trade-input" type="text" name="trade_type" required />
+              <label for="trade-input">Trade Type<span id="trademessage"></span></label>
+            </div>
+
+            <div class="input-box">
+              <input id="region-input" type="text" name="region" required />
+              <label for="region-input">Region/Town<span id="regmessage"></span></label>
+            </div>
+
+            <div class="input-box">
+              <input id="bio-input" type="text" name="bio" required />
+              <label for="bio-input">Bio<span id="biomessage"></span></label>
+            </div>
+
+            <div class="date-time row g-3">
+              <label>Availability<span id="availmessage"></span></label>
+
+              <div class="col-6 col-md-3">
+                <label for="availstart-input" class="form-label">Start Time</label>
+                <input id="availstart-input" class="form-control" type="time" name="avail_start" required />
+              </div>
+
+              <div class="col-6 col-md-3">
+                <label for="availend-input" class="form-label">End Time</label>
+                <input id="availend-input" class="form-control" type="time" name="avail_end" required />
+              </div>
+            </div>
+
+            <div class="input-box">
+              <input type="text" name="avail_details" />
+              <label>Availability Details (Optional)<span id="availdmessage"></span></label>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../partials/footer'); %>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+      <script src="/js/profilevalidation.js"></script>
+
+      <% if (errors) { %>
+        <script>
+
+          const errorDataJSON = `<%- JSON.stringify(errors) %>`;
+          const errorData = JSON.parse(errorDataJSON);
+
+          errorData.forEach((error) => {
+
+            if (error.path === 'trade_type') {
+              const msgElement = document.getElementById('trademessage');
+              fadeMessage(msgElement, error.msg);
+            }
+
+            if (error.path === 'region') {
+              const msgElement = document.getElementById('regmessage');
+              fadeMessage(msgElement, error.msg);
+            }
+
+            if (error.path === 'bio') {
+              const msgElement = document.getElementById('biomessage');
+              fadeMessage(msgElement, error.msg);
+            }
+
+            if (error.path === 'avail_start' || error.path === 'avail_end') {
+              const msgElement = document.getElementById('availmessage');
+              fadeMessage(msgElement, error.msg);
+            }
+
+            if (error.path === 'avail_details') {
+              const msgElement = document.getElementById('availdmessage');
+              fadeMessage(msgElement, error.msg);
+            }
+
+          });
+        </script>
+        <% }; %>
+</body>
+
+</html>

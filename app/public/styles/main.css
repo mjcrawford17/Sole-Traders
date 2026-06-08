@@ -1,0 +1,47 @@
+@import url("404page.css");
+@import url("account.css");
+@import url("bookingpage.css");
+@import url("bookings.css");
+@import url("confirmation.css");
+@import url("dropdown.css");
+@import url("footer.css");
+@import url("herohome.css");
+@import url("login.css");
+@import url("mobiletables.css");
+@import url("navbar.css");
+@import url("profilesetup.css");
+@import url("review.css");
+@import url("services.css");
+@import url("terms.css");
+@import url("traderhome.css");
+@import url("traderprofile.css");
+
+:root {
+    --black: #0b0b0b;
+    --dark: #0f172a;
+    --red: #e10600;
+    --green: #04b84c;
+    --blue: #0084ff;
+    --white: #ffffff;
+    --muted: #e5e7eb;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+

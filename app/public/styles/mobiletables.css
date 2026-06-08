@@ -1,0 +1,170 @@
+/* Mobile Table */
+@media (max-width: 800px) {
+    
+    .service-container {
+        padding: 15px;
+    }
+    
+    .service-wrapper {
+        width: 100%;
+        border-radius: 15px;
+    }
+    
+    .service-box {
+        padding: 15px;
+    }
+    
+    .service-box h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .filter-wrap {
+        margin-bottom: 15px;
+    }
+    
+    .filter-bar .trade-select {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+    
+    .tr-submit-btn {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    .service-box .table thead,
+    .services-header .table thead,
+    .profile-section .table thead {
+        display: none;
+    }
+    
+    .service-box .table {
+        border: none;
+        background: transparent;
+    }
+    
+    .service-box tbody {
+        display: block;
+    }
+    
+    .service-box tbody tr {
+        display: block;
+        margin-bottom: 16px;
+        padding: 16px;
+        background: white;
+        border: 2px solid var(--red);
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-box tbody td {
+        display: block;
+        padding: 8px 0;
+        border: none;
+        text-align: left;
+    }
+    
+    .service-box tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: var(--red);
+        display: block;
+        font-size: 11px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+        letter-spacing: 0.5px;
+    }
+    
+    .service-box tbody td:last-child {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-box tbody td:last-child::before {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    .service-box tbody td:last-child .btn {
+        flex: 1;
+        min-width: calc(50% - 4px);
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+    
+    .services-header .table,
+    .profile-section .table {
+        border: none;
+        background: transparent;
+    }
+    
+    .services-header tbody,
+    .profile-section tbody {
+        display: block;
+    }
+    
+    .services-header tbody tr,
+    .profile-section tbody tr {
+        display: block;
+        margin-bottom: 16px;
+        padding: 16px;
+        background: white;
+        border: 2px solid var(--red);
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .services-header tbody td,
+    .profile-section tbody td {
+        display: block;
+        padding: 8px 0;
+        border: none;
+        text-align: left;
+    }
+    
+    .services-header tbody td::before,
+    .profile-section tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: var(--red);
+        display: block;
+        font-size: 11px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+        letter-spacing: 0.5px;
+    }
+    
+    .services-header tbody td:last-child,
+    .profile-section tbody td:last-child {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .services-header tbody td:last-child::before,
+    .profile-section tbody td:last-child::before {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    .services-header tbody td:last-child .btn,
+    .profile-section tbody td:last-child .btn {
+        flex: 1;
+        min-width: calc(50% - 4px);
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+    
+    .services-header tbody td:last-child .btn:only-child,
+    .profile-section tbody td:last-child .btn:only-child {
+        min-width: 100%;
+    }
+}

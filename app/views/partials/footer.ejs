@@ -1,0 +1,21 @@
+<footer class="py-3">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="/" class="px-2 footer-link">Home</a></li>
+        <li class="nav-item"><a href="/traders" class="px-2 footer-link">Traders</a></li>
+        <% if (!loggedin) { %>
+            <li class="nav-item"><a href="/login" class="px-2 footer-link">Login</a></li>
+        <% } else { %>
+            <li class="nav-item"><a href="/account" class="px-2 footer-link">Account</a></li>
+            <li class="nav-item"><a href="/bookings" class="px-2 footer-link">Bookings</a></li>
+            <li class="nav-item"><a href="/services" class="px-2 footer-link">Services</a></li>
+            <li class="nav-item"><a href="/logout" class="px-2 footer-link">Logout</a></li>
+        <% } %>
+    </ul>
+    <p class="text-center">© 2026 Sole Traders, Inc</p>
+    <small class="footer-copy">
+        <a href="/terms" class="footer-link"><strong>Terms &amp; Conditions</strong></a>
+        — Sole Traders is a UK-based platform connecting independent traders with clients. We do not provide services
+        ourselves and are not responsible for agreements, work carried out, or disputes between traders and clients.
+        Information submitted must be accurate and lawful. By using this site, you agree to these terms.
+    </small>
+</footer>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sole Traders - Make Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="icon" type="image/png" href="/imgs/favicon.png" />
+</head>
+
+<body>
+    <%- include('../partials/navbar'); %>
+
+        <div class="container-fluid bookcf-container">
+            <div class="bookcf-wrapper">
+                <div class="bookcf-box text-center">
+                    <h2>Booking Confirmation</h2>
+                    <a class="back-btn btn" href="/">Home</a>
+                    <p class="mb-3">Booking ID: <%= bookingId %></p>
+                    <p class="text-muted mb-4">Our registered Trader will confirm whether they are available to
+                    do your job. If they aren't they can contact you by email to reorganise a suitable date
+                    and time.</p>
+                    <p class="fw-semibold mb-0 final-line">Thanks for using <span class="text-primary">Sole Traders</span>!</p>
+                    <a class="btn-dark btn" href="/traders">View other Traders</a>
+                </div>
+            </div>
+        </div>
+
+        <%- include('../partials/footer'); %>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                crossorigin="anonymous">
+                </script>
+</body>
+
+</html>

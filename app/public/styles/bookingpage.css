@@ -1,0 +1,41 @@
+/*Booking Page*/
+
+.bookpg-container{
+    min-height: 95vh;
+    min-height: 95dvh;
+    padding: 20px 20px;
+    background: url(/imgs/background.jpg) no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bookpg-wrapper {
+    width: 750px;
+    min-height: 600px;
+    background: transparent;
+    border: 2px solid var(--red);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px var(--black);
+    display: flex;
+    overflow: hidden;
+}
+
+.bookpg-wrapper .bookpg-box {
+    width: 100%;
+    padding: 20px;
+}
+
+.bookpg-box h2 {
+    font-size: 26px;
+    color: var(--black);
+    text-align: center;
+}
+
+.bookpg-box .date-time {
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+}

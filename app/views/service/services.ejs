@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sole Traders - Add Service</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="icon" type="image/png" href="/imgs/favicon.png" />
+</head>
+
+<body>
+    <%- include('../partials/navbar'); %>
+
+        <div class="container-fluid service-container">
+            <div class="service-wrapper">
+                <div class="service-box">
+                    <h2>All Services</h2>
+                    <a class="add-btn btn" href="/addservice">+</a>
+                    <% if (!services || services.length===0) { %>
+                        <p class="text-center text-muted mt-3">
+                            No services added yet. Why not add one now?
+                        </p>
+                        <% } else { %>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Service Name</th>
+                                        <th scope="col">Service Price</th>
+                                        <th scope="col">Hourly/Fixed</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% services.forEach((row)=> { %>
+                                        <tr>
+                                            <td data-label="Service Name">
+                                                <%= row.title %>
+                                            </td>
+                                            <td data-label="Service Price">£<%= row.base_price %>
+                                            </td>
+                                            <td data-label="Type">
+                                                <%= row.pricing_type[0].toUpperCase()+row.pricing_type.slice(1) %>
+                                            </td>
+                                            <td data-label="Actions">
+                                                <a class="btn custom-btn2"
+                                                    href="/editservice/<%= row.service_id %>">Edit</a>
+                                                <a class="btn custom-btn3" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteModal-<%= row.service_id %>">Delete</a>
+                                            </td>
+                                        </tr>
+                                        <% }); %>
+                                </tbody>
+                            </table>
+                            <% }; %>
+                </div>
+            </div>
+            <% services.forEach(row=> { %>
+                <div class="modal fade" id="deleteModal-<%= row.service_id %>" tabindex="-1"
+                    aria-labelledby="deleteModalLabel-<%= row.service_id %>" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="deleteModalLabel-<%= row.service_id %>">Delete
+                                    <%= row.title %>?
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="close"></button>
+                            </div>
+                            <div class="modal-body">
+                                This can’t be undone.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn custom-btn4" data-bs-dismiss="modal">Cancel</button>
+                                <form method="POST" action="/deleteservice/<%= row.service_id %>">
+                                    <button type="submit" class="btn custom-btn3">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+
+        <%- include('../partials/footer'); %>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                crossorigin="anonymous"></script>
+</body>
+
+</html>

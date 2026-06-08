@@ -1,0 +1,267 @@
+/* Hero/Search */
+
+.hero-container {
+    height: 400px;
+    background: url(/imgs/herobkg.jpg) no-repeat center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Search Wrapper */
+.hero-search {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Input */
+.hero-search input {
+    width: 100%;
+    padding: 1rem 1.5rem 1rem 3.2rem;
+    font-size: 1rem;
+
+    border-radius: 999px;
+    border: none;
+    outline: none;
+
+    background: var(--white);
+    backdrop-filter: blur(6px);
+
+    box-shadow: 0 12px 30px var(--black);
+    transition: all 0.35s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-search select {
+    width: 100%;
+    padding: 1rem 1.5rem 1rem 3.2rem;
+    font-size: 1rem;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+    background: var(--white);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 12px 30px var(--black);
+    transition: all 0.35s ease;
+    position: relative;
+    z-index: 1;
+    /* for Firefox */
+    -moz-appearance: none;
+    /* for Safari, Chrome, Opera */
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Search Icon */
+.search-icon {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.search-icon svg {
+    fill: #333;
+    transition: all 0.3s ease;
+}
+
+/* Placeholder */
+.hero-search input::placeholder {
+    color: var(--dark);
+}
+
+.hero-search:hover input,
+.hero-search:hover select {
+    box-shadow: 0 18px 45px var(--black);
+}
+
+.hero-search input:focus,
+.hero-search select:focus {
+    transform: translateY(-2px);
+}
+
+/* Hover */
+.hero-search:hover input {
+    box-shadow: 0 18px 45px var(--black);
+}
+
+/* Focus Effects */
+.hero-search input:focus {
+    transform: translateY(-2px);
+}
+
+.hero-search:focus-within .search-icon svg {
+    fill: var(--red);
+    transform: scale(1.15);
+}
+
+/* Hero Content Wrapper */
+.hero-content {
+    text-align: center;
+    color: var(--white);
+    width: 100%;
+    padding: 2 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-content form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Headings */
+.hero-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+/* AND / OR */
+.hero-divider {
+    margin: 1.2rem 0;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+    color: var(--white);
+}
+
+/* Location + Button Row */
+.hero-search-row {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* Smaller Location Search */
+.hero-search--small {
+    max-width: 300px;
+}
+
+/* Search Button */
+.hero-search-btn {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding: 0.9rem 1.4rem;
+    border-radius: 999px;
+    border: none;
+
+    background: var(--red);
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Testimonial Section */
+.testimonial-section {
+  background: linear-gradient(135deg, var(--red) 0%, var(--dark) 100%);
+  border-top: 1px solid var(--red);
+  border-bottom: 1px solid var(--dark);
+  color: var(--white);
+}
+
+.testimonial-container {
+  max-width: 56rem;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 3rem;
+}
+
+.testimonial-quote {
+  color: var(--white) !important;
+}
+
+.testimonial-quote p {
+  margin-bottom: 0;
+}
+
+.testimonial-author .text-dark,
+.testimonial-author .fw-semibold {
+  color: var(--white) !important;
+}
+
+.testimonial-author .text-secondary {
+  color: var(--muted) !important;
+}
+
+.testimonial-author svg {
+  color: var(--white) !important;
+}
+
+@media (max-width: 600px) {
+    .hero-search-row {
+        flex-direction: column;
+    }
+
+    .hero-search--small {
+        max-width: 100%;
+        flex: 1;
+    }
+
+    .hero-search-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .testimonial-quote {
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-height: 1000px) {
+    .hero-container {
+        height: 600px;
+        background: url(/imgs/herobkg.jpg) no-repeat center;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (min-height: 1200px) {
+    .hero-container {
+        height: 650px;
+        background: url(/imgs/herobkg.jpg) no-repeat center;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

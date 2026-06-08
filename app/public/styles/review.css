@@ -1,0 +1,39 @@
+/*Reviews*/
+
+.review-container{
+    min-height: 90vh;
+    min-height: 90dvh;
+    padding: 20px 20px;
+    background: url(/imgs/background.jpg) no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-wrapper {
+    width: 800px;
+    min-height: 450px;
+    background: transparent;
+    border: 2px solid var(--red);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px var(--black);
+    display: flex;
+    overflow: hidden;
+}
+
+.review-wrapper .review-box {
+    width: 100%;
+    padding: 30px;
+}
+
+.review-box h2 {
+    font-size: 26px;
+    color: var(--black);
+    text-align: center;
+}
+
+.stars-range {
+    padding-bottom: 30px;
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sole Traders - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="icon" type="image/png" href="/imgs/favicon.png">
+</head>
+
+<body>
+
+  <%- include('../partials/navbar'); %>
+    <div class="general-container">
+
+      <section class="container-fluid hero-container">
+        <div class="hero-content">
+
+          <h1 class="hero-title">Got a Job? Get a Trader</h1>
+          <p class="hero-subtitle">Local Professionals, ready when you are</p>
+          <form method="GET" action="/traders">
+            <div class="hero-search">
+              <span class="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                  fill="#000000">
+                  <path
+                    d="M754-81q-8 0-15-2.5T726-92L522-296q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l85-85q6-6 13-8.5t15-2.5q8 0 15 2.5t13 8.5l204 204q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13l-85 85q-6 6-13 8.5T754-81Zm0-95 29-29-147-147-29 29 147 147ZM205-80q-8 0-15.5-3T176-92l-84-84q-6-6-9-13.5T80-205q0-8 3-15t9-13l212-212h85l34-34-165-165h-57L80-765l113-113 121 121v57l165 165 116-116-43-43 56-56H495l-28-28 142-142 28 28v113l56-56 142 142q17 17 26 38.5t9 45.5q0 24-9 46t-26 39l-85-85-56 56-42-42-207 207v84L233-92q-6 6-13 9t-15 3Zm0-96 170-170v-29h-29L176-205l29 29Zm0 0-29-29 15 14 14 15Zm549 0 29-29-29 29Z" />
+                </svg>
+              </span>
+
+              <select name="trade">
+                <option value="">Search Traders (Electrician, Plumber…)</option>
+                <% tradeTypes.forEach((row)=> { %>
+                  <option value="<%= row.trade_type %>">
+                    <%= row.trade_type %>
+                  </option>
+                  <% }) %>
+              </select>
+            </div>
+
+            <div class="hero-divider">AND / OR</div>
+
+            <div class="hero-search-row">
+
+              <div class="hero-search hero-search--small">
+                <span class="search-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#000000">
+                    <path
+                      d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z" />
+                  </svg>
+                </span>
+                <input type="text" name="location" placeholder="Enter Location" />
+              </div>
+
+              <button type="submit" class="hero-search-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                  fill="currentColor">
+                  <path
+                    d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+                </svg>
+                Search
+              </button>
+          </form>
+        </div>
+      </section>
+
+      <section class="container-fluid traders-container">
+        <h1 class="traders-title text-center">Top Traders by Bookings</h1>
+        <div class="container traders-grid">
+          <div class="row g-4 justify-content-center">
+            <% if (!traders || traders.length===0) { %>
+              <p class="text-center text-muted mt-3">
+                No Traders currently listed yet. Come back soon!
+              </p>
+              <% } else { %>
+                <% traders.forEach((row)=> { %>
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="/profile/<%= row.trader_id %>" class="trader-link">
+                      <div class=" trader-tab h-100 text-center">
+                        <h6 class="mb-1">
+                          <%= row.full_name %>
+                        </h6>
+                        <small>
+                          <%= row.trade_type %>
+                        </small>
+                        <small class="text-muted">
+                          <%= row.region_town %>
+                        </small>
+                        <small>
+                          <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px"
+                            fill="#000000">
+                            <path
+                              d="m384-334 96-74 96 74-36-122 90-64H518l-38-124-38 124H330l90 64-36 122ZM233-120l93-304L80-600h304l96-320 96 320h304L634-424l93 304-247-188-247 188Zm247-369Z" />
+                          </svg>
+                          <% if (row.avg_rating) {%>
+                            <%= row.avg_rating %>
+                              <% } else { %>
+                                No rating
+                                <% }; %>
+                                  <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960"
+                                    width="16px" fill="#000000">
+                                    <path
+                                      d="m384-334 96-74 96 74-36-122 90-64H518l-38-124-38 124H330l90 64-36 122ZM233-120l93-304L80-600h304l96-320 96 320h304L634-424l93 304-247-188-247 188Zm247-369Z" />
+                                  </svg>
+                        </small>
+                      </div>
+                    </a>
+                  </div>
+                  <% }) %>
+                    <% }; %>
+          </div>
+      </section>
+    </div>
+
+    <section class="testimonial-section position-relative overflow-hidden px-3 px-lg-4 py-5">
+      <div class="testimonial-container container">
+        <img class="testimonial-logo" src="/imgs/logo.png" />
+        <figure class="mt-5">
+          <blockquote class="testimonial-quote text-center fs-4 fw-semibold text-dark">
+            <p>"Finding reliable tradespeople shouldn't be a gamble. We've built a platform where quality craftsmanship
+              meets genuine customer reviews, making every hire a confident decision."</p>
+          </blockquote>
+          <figcaption class="testimonial-caption mt-5">
+            <div class="testimonial-author mt-4 d-flex align-items-center justify-content-center gap-2">
+              <div class="fw-semibold text-dark">Matthew Crawford</div>
+              <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="text-dark">
+                <circle r="1" cx="1" cy="1" fill="currentColor" />
+              </svg>
+              <div class="text-secondary">CEO of Sole Traders</div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <%- include('../partials/footer'); %>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

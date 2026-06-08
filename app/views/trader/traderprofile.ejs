@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sole Traders - <%= trader.full_name %>
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="icon" type="image/png" href="/imgs/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.js"
+        integrity="sha512-D4pL3vNgjkHR/qq+nZywuS6Hg1gwR+UzrdBW6Yg8l26revKyQHMgPq9CLJ2+HHalepS+NuGw1ayCCsGXu9JCXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+
+    <%- include('../partials/navbar'); %>
+
+        <div class="container-fluid profile-container">
+            <div class="profile-wrapper">
+
+                <div class="profile-box profile-section active-section">
+
+                    <div class="profile-box profile-section active-section">
+                        <div class="profile-top">
+                            <h1 class="profile-name mb-2">
+                                <%= trader.full_name %>
+                            </h1>
+
+                            <div class="text-muted profile-member mb-3">
+                                <i class="bi bi-calendar-check me-1"></i>
+                                Member since
+                                <%= new Date(trader.created_at).toLocaleDateString("en-GB", { month: "long" ,
+                                    year: "numeric" }) %>
+                            </div>
+
+                            <div class="profile-row">
+                                <span class="item"><i class="bi bi-tools"></i>
+                                    <%= trader.trade_type %>
+                                </span>
+                                <span class="item"><i class="bi bi-geo-alt"></i>
+                                    <%= trader.region_town %>
+                                </span>
+                                <span class="item"><i class="bi bi-star"></i>
+                                    <% if (trader.avg_rating) {%>
+                                        <%= trader.avg_rating %>
+                                            <% } else { %>
+                                                No rating
+                                                <% }; %>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="profile-grid2">
+                            <aside class="left-stack">
+
+                                <section class="side-card bio-card">
+
+                                    <div class="accordion accordion-flush bio-accordion" id="bioAccordion">
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="bioHeading">
+                                                <button class="accordion-button collapsed bio-toggle" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#bioCollapse"
+                                                    aria-expanded="false" aria-controls="bioCollapse">
+
+                                                    <i class="bi bi-person-badge me-2"></i>
+                                                    Bio
+                                                </button>
+                                            </h2>
+
+                                            <div id="bioCollapse" class="accordion-collapse collapse"
+                                                aria-labelledby="bioHeading" data-bs-parent="#bioAccordion">
+
+                                                <div class="accordion-body text-muted">
+
+                                                    <%= trader.bio ? trader.bio
+                                                        : "This trader hasn't added a bio yet. Book to discuss your job and get a quick quote."
+                                                        %>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </section>
+
+                                <section class="side-card">
+                                    <h5 class="side-title">
+                                        <i class="bi bi-shield-check me-2"></i> Trader details
+                                    </h5>
+
+                                    <div class="detail-list">
+                                        <div class="detail-row">
+                                            <i class="bi bi-check-circle-fill detail-icon text-success"></i>
+                                            <span>Verified profile</span>
+                                        </div>
+
+                                        <div class="detail-row">
+                                            <i class="bi bi-lightning-fill detail-icon text-warning"></i>
+                                            <span>Fast response</span>
+                                        </div>
+
+                                        <div class="detail-row">
+                                            <i class="bi bi-tools detail-icon text-primary"></i>
+                                            <span>Trade specialist</span>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="side-card">
+                                    <h5 class="side-title">
+                                        <i class="bi bi-clock me-2"></i> Availability
+                                    </h5>
+
+                                    <div class="time-grid">
+                                        <div>
+                                            <div class="time-label text-muted">Start Time</div>
+                                            <div class="time-value">
+                                                <time datetime="<%= trader.availability_start_time %>">
+                                                    <%= String(trader.availability_start_time).slice(0,5) %>
+                                                </time>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="time-label text-muted">End Time</div>
+                                            <div class="time-value">
+                                                <time datetime="<%= trader.availability_end_time %>">
+                                                    <%= String(trader.availability_end_time).slice(0,5) %>
+                                                </time>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="avail-details">
+                                        <div class="avail-details-label">Details</div>
+                                        <div class="text-muted">
+                                            <%= trader.availability_details ? trader.availability_details
+                                                : "Nothing to add" %>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="side-card stats-card">
+                                    <h5 class="side-title">
+                                        <i class="bi bi-pie-chart me-2"></i> Statistics
+                                    </h5>
+
+                                    <% if (!bookings || bookings.length===0) { %>
+                                        <p class="text-center text-muted mt-3"> No statistics available yet. <br>Please
+                                            check again soon! </p>
+                                        <% } else { %>
+                                            <div class="chart-wrap">
+                                                <canvas id="bkgcanvas"></canvas>
+                                            </div>
+                                            <% }; %>
+                                </section>
+
+                            </aside>
+
+                            <section class="right-services">
+
+                                <div class="services-card">
+                                    <div class="text-center mb-3">
+                                        <h2 class="services-h mb-1">Services</h2>
+                                        <div class="text-muted">Choose a service to book.</div>
+                                    </div>
+
+                                    <% if (!services || services.length===0) { %>
+                                        <p class="text-secondary text-center mb-0">No services available. Please check
+                                            again soon!</p>
+                                        <% } else { %>
+                                            <div class="table-responsive">
+                                                <table class="table services-table align-middle mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Service Name</th>
+                                                            <th scope="col">Price</th>
+                                                            <th scope="col">Type</th>
+                                                            <th scope="col" class="text-end">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% services.forEach((row)=> { %>
+                                                            <tr>
+                                                                <td>
+                                                                    <%= row.title %>
+                                                                </td>
+                                                                <td>£<%= row.base_price %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= row.pricing_type[0].toUpperCase()+row.pricing_type.slice(1)
+                                                                        %>
+                                                                </td>
+                                                                <td class="text-end">
+                                                                    <a class="btn custom-btn2"
+                                                                        href="/bookservice/<%= row.service_id %>">Book</a>
+                                                                </td>
+                                                            </tr>
+                                                            <% }); %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <% } %>
+
+                                </div>
+
+                                <div class="review-row">
+                                    <a class="review-btn" href="/review/<%= trader.trader_id %>">
+                                        <i class="bi bi-star me-2"></i> Leave a Review
+                                    </a>
+                                </div>
+
+                            </section>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <%- include('../partials/footer'); %>
+            <link rel="stylesheet"
+                href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                crossorigin="anonymous"></script>
+
+            <script src="/js/chartfunctions.js"></script>
+
+            <script>
+                const myJSONdata = `<%- JSON.stringify(bookings) %>`;
+                const titleRows = `<%- JSON.stringify(titleData) %>`;
+                const newdata = JSON.parse(myJSONdata);
+                const titlesObjects = JSON.parse(titleRows);
+                const titles = titlesObjects.map(item => item.title);
+                const counts = generateCounts(newdata, titles);
+                console.log(counts);
+
+                const chartconfig = createChart(counts, titles);
+                const chart = new Chart("bkgcanvas", chartconfig);
+            </script>
+
+</body>
+
+</html>
